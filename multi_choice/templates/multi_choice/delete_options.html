@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>delete a story</title>
+</head>
+<body>
+<p> are you sure you want to delete '{{question.title}}'?</p>
+<form action="{% url 'delete' question.id %}" method="POST">
+    {% csrf_token %}
+    <a href="{% url 'question' %}">cancel</a>
+    <input type="submit" value='delete'>
+</form>
+</body>
+</html>

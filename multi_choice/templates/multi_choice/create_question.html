@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- Custom styles for this template -->
+    <link href="album.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>mcq</title>
+</head>
+<body>
+ <a href="{% url 'home' %}">Go home</a>
+ <div><a class="btn" href="{% url 'create' %}">Add new story</a></div>
+ <a href="{% url 'story_home' %}">see all stories</a>
+<h1>Add questions</h1>
+{{story_obj.title}}
+{{story_obj.body}}
+<hr/>
+<form method="POST">
+    {% csrf_token %}
+
+{{question_form.as_p}}
+    <input type="submit" name="Submit">
+</form>
+<div>
+    {% for question in questions %}
+    <table>
+        <tr>
+            <td>({{forloop.counter}})  {{question.question_text}}</td>
+        </tr>
+        <tr>
+            <td><input type="radio" id="a" name ='questions.id' value="{{questions.a}}">{{question.a}}</td>
+        </tr>
+        <tr>
+            <td><input type="radio" id="b" name ='questions.id' value="{{questions.b}}">{{question.b}}</td>
+        </tr>
+        <tr>
+            <td><input type="radio" id="c" name ='questions.id' value="{{questions.c}}">{{question.c}}</td>
+        </tr>
+        <tr>
+            <td><input type="radio" id="d" name ='questions.id' value="{{questions.d}}">{{question.d}}</td>
+        </tr>
+
+<hr/>
+    </table>
+
+    {% endfor %}
+
+<!--<a href="{% url 'home' %}">Go home</a>-->
+    <tr>
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+</html>
